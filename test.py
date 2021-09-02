@@ -21,7 +21,7 @@ l = []
 with open('data.js', "w", encoding="UTF-8-sig") as f_write:
     json.dump(l, f_write, ensure_ascii=False, indent=4)
 
-final_data = f"var data = {data};"
+
 final_data = f"var 1등 = '{a}';\n\
 var 2등 = '{b}';\n\
 var 3등 = '{c}';\n\
