@@ -2,6 +2,7 @@ import requests
 
 from bs4 import BeautifulSoup
 import json
+import csv
  
 
 response = requests.get("https://finance.naver.com/sise/")
