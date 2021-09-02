@@ -1,26 +1,31 @@
 import requests
+
 from bs4 import BeautifulSoup
 
-response = requests.get("https://finance.naver.com/item/main.nhn?code=005930")
+ 
 
-response.encoding = 'utf-8'
-html = response.text
+response = requests.get("https://finance.naver.com/sise/")
 
-soup = BeautifulSoup(html, 'html.parser')
+ 
 
-soup.select('.wrap_company > h2')[0].text    #종목:삼성전자 크롤링
+soup = BeautifulSoup(response.text, 'lxml')
 
-soup.select('td.first > em > span.blind')[0].text #전일가
+a = soup.select('.lst_pop > li')[0].text
+b = soup.select('.lst_pop > li')[1].text
+c = soup.select('.lst_pop > li')[2].text
+d = soup.select('.lst_pop > li')[3].text
+e = soup.select('.lst_pop > li')[4].text
 
-soup.select('em.no_up > span')[0].text  #고가
+l = []
+with open('data.js', "w", encoding="UTF-8-sig") as f_write:
+    json.dump(l, f_write, ensure_ascii=False, indent=4)
 
-soup.select('em.no_down > span')[0].text  #저가
-
-soup.select('em.no_up > span.blind')[0].text  #현재가
-
-soup.select('em.no_up > span.ico.up')[0].text #상승 or 하락
-
-soup.select('em.no_up > span.blind')[1].text  # 전일대비
-
-soup.select('#_market_sum')[0].text    #시가총액
-
+final_data = f"var data = {data};"
+final_data = f"var 1등 = '{a}';\n\
+var 2등 = '{b}';\n\
+var 3등 = '{c}';\n\
+var 4등 = '{d}';\n\
+var 5등 = '{e}';\n\
+" + final_data
+with open('data.js', "w", encoding="UTF-8-sig") as f_write:
+    f_write.write(final_data)
